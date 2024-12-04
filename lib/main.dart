@@ -12,11 +12,11 @@ class NotesApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(brightness: Brightness.dark),
       routes: {
         NotesView.id: (context) => NotesView(),
       },
       initialRoute: NotesView.id,
+      theme: ThemeData.dark(),
     );
   }
 }

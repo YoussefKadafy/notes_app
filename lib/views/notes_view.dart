@@ -8,9 +8,11 @@ class NotesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showModalBottomSheet(
+              isScrollControlled: true,
               context: context,
               builder: (context) {
                 return AddNoteBottomSheet();

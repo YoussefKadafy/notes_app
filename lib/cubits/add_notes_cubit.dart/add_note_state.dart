@@ -7,9 +7,9 @@ class AddNoteInitial extends AddNoteState {}
 
 class AddNoteLoading extends AddNoteState {}
 
-class AddNoteSuccessed extends AddNoteState {}
+class AddNoteSuccesse extends AddNoteState {}
 
-class AddNoteFailured extends AddNoteState {
+class AddNoteFailure extends AddNoteState {
   final String errorMessage;
-  AddNoteFailured(this.errorMessage);
+  AddNoteFailure(this.errorMessage);
 }

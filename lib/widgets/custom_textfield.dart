@@ -3,16 +3,22 @@ import 'package:notes_app/consts.dart';
 
 class CustomTextField extends StatelessWidget {
   const CustomTextField(
-      {super.key, required this.hint, this.maxlines = 1, this.onSaved});
+      {super.key,
+      required this.hint,
+      this.maxlines = 1,
+      this.onSaved,
+      this.onChanged});
   final String hint;
   final int maxlines;
   final void Function(String?)? onSaved;
+  final void Function(String)? onChanged;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(16),
       child: TextFormField(
         onSaved: onSaved,
+        onChanged: onChanged,
         validator: (value) {
           if (value?.isEmpty ?? true) {
             return 'the text is required';

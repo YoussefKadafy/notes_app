@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:meta/meta.dart';
 import 'package:notes_app/consts.dart';
@@ -9,14 +10,14 @@ part 'notes_state.dart';
 class NotesCubit extends Cubit<NotesState> {
   NotesCubit() : super(NotesInitial());
 
+  static NotesCubit get(context) => BlocProvider.of(context);
+  List<NoteModel>? allNotes;
   fetchAllNotes() {
+    emit(NotesLoading());
     var notesBox = Hive.box<NoteModel>(kNotesBox);
+    print('NotesLoading ${notesBox.length}');
+    allNotes = notesBox.values.toList();
 
-    try {
-      List<NoteModel> allNotes = notesBox.values.toList();
-      emit(NotesSuccess(notes: allNotes));
-    } catch (e) {
-      emit(NotesFailure(errorMessage: e.toString()));
-    }
+    emit(NotesSuccess(notes: allNotes!));
   }
 }
